@@ -114,3 +114,6 @@ if st.button("Run MCDM Analysis"):
         fig, ax = plt.subplots(figsize=(7, 7), dpi=150, tight_layout=True, subplot_kw=dict(projection='polar'))
         visuals.polar_plot(ranks, labels=selected_method_names, legend_ncol=2, ax=ax)
         st.pyplot(fig)
+        
+if st.button("Send balloons!"):
+    st.balloons()
