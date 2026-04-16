@@ -81,9 +81,16 @@ selected_method_names = st.sidebar.multiselect(
 )
 
 # --- 4. EXECUTE & DISPLAY RESULTS ---
+if "run_analysis" not in st.session_state:
+    st.session_state.run_analysis = False
+    
 if st.button("Run MCDM Analysis"):
+    st.session_state.run_analysis = True
+    
+if st.session_state.run_analysis:
     if not selected_method_names:
         st.warning("Please select at least one method from the sidebar.")
+        st.session_state.run_analysis = False
     else:
         methods = [available_methods[name] for name in selected_method_names]
         prefs = []
