@@ -81,7 +81,7 @@ selected_method_names = st.sidebar.multiselect(
 )
 
 # Widget 3
-agree = st.checkbox("I agree to share my data")
+agree = st.sidebar.checkbox("I agree to share my data")
 if agree:
     st.write("Great!")
 
