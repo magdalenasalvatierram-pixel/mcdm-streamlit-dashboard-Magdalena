@@ -80,6 +80,11 @@ selected_method_names = st.sidebar.multiselect(
     default=['TOPSIS', 'SAW']
 )
 
+# Widget 3
+agree = st.checkbox("I agree to share my data")
+if agree:
+    st.write("Great!")
+
 # --- 4. EXECUTE & DISPLAY RESULTS ---
 if "run_analysis" not in st.session_state:
     st.session_state.run_analysis = False
@@ -117,14 +122,6 @@ if st.session_state.run_analysis:
             rank_df = pd.DataFrame(zip(*ranks), columns=selected_method_names, index=alts_names).astype(int)
             st.dataframe(rank_df, use_container_width=True)
 
-        # Widget 3: Export preferences
-        action = st.menu_button("Export", options=["CSV", "JSON", "PDF"])
-        if action == "CSV":
-            st.write("Exporting as CSV...")
-        elif action == "JSON":
-            st.write("Exporting as JSON...")
-        elif action == "PDF":
-            st.write("Exporting as PDF...")
 
         # Plotting the polar chart
         st.subheader("Polar Ranking Plot")
