@@ -103,27 +103,21 @@ if st.button("Run MCDM Analysis"):
             st.subheader("Preference Table")
             pref_df = pd.DataFrame(zip(*prefs), columns=selected_method_names, index=alts_names).round(3)
             st.dataframe(pref_df, use_container_width=True)
-            # Widget 3.1: Export preferences
-            action1 = st.menu_button("Export", options=["CSV", "JSON", "PDF"])
-            if action1 == "CSV":
-                st.write("Exporting as CSV...")
-            elif action1 == "JSON":
-                st.write("Exporting as JSON...")
-            elif action1 == "PDF":
-                st.write("Exporting as PDF...")
+
             
         with col2:
             st.subheader("Ranking Table")
             rank_df = pd.DataFrame(zip(*ranks), columns=selected_method_names, index=alts_names).astype(int)
             st.dataframe(rank_df, use_container_width=True)
-            # Widget 3.2: Export preferences
-            action = st.menu_button("Export", options=["CSV", "JSON", "PDF"])
-            if action == "CSV":
-                st.write("Exporting as CSV...")
-            elif action == "JSON":
-                st.write("Exporting as JSON...")
-            elif action == "PDF":
-                st.write("Exporting as PDF...")
+
+        # Widget 3: Export preferences
+        action = st.menu_button("Export", options=["CSV", "JSON", "PDF"])
+        if action == "CSV":
+            st.write("Exporting as CSV...")
+        elif action == "JSON":
+            st.write("Exporting as JSON...")
+        elif action == "PDF":
+            st.write("Exporting as PDF...")
 
         # Plotting the polar chart
         st.subheader("Polar Ranking Plot")
