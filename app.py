@@ -103,7 +103,7 @@ if st.button("Run MCDM Analysis"):
             st.subheader("Preference Table")
             pref_df = pd.DataFrame(zip(*prefs), columns=selected_method_names, index=alts_names).round(3)
             st.dataframe(pref_df, use_container_width=True)
-            # Export preferences
+            # Widget 3.1: Export preferences
             action = st.menu_button("Export", options=["CSV", "JSON", "PDF"])
             if action == "CSV":
                 st.write("Exporting as CSV...")
@@ -116,7 +116,7 @@ if st.button("Run MCDM Analysis"):
             st.subheader("Ranking Table")
             rank_df = pd.DataFrame(zip(*ranks), columns=selected_method_names, index=alts_names).astype(int)
             st.dataframe(rank_df, use_container_width=True)
-            # Export preferences
+            # Widget 3.2: Export preferences
             action = st.menu_button("Export", options=["CSV", "JSON", "PDF"])
             if action == "CSV":
                 st.write("Exporting as CSV...")
@@ -130,12 +130,15 @@ if st.button("Run MCDM Analysis"):
         fig, ax = plt.subplots(figsize=(7, 7), dpi=150, tight_layout=True, subplot_kw=dict(projection='polar'))
         visuals.polar_plot(ranks, labels=selected_method_names, legend_ncol=2, ax=ax)
         st.pyplot(fig)
- 
+        
+        # Widget 2  
+        st.markdown("Did you like it?")
+        sentiment_mapping = ["one", "two", "three", "four", "five"]
+        selected = st.feedback("stars")
+        if selected is not None:
+            st.markdown(f"You selected {sentiment_mapping[selected]} star(s). Thanks for the feedback")
+        
 # Widget 1
 if st.button("Send balloons!"):
     st.balloons()
-sentiment_mapping = ["one", "two", "three", "four", "five"]
-# Widget 2
-selected = st.feedback("stars")
-if selected is not None:
-    st.markdown(f"You selected {sentiment_mapping[selected]} star(s). Thanks for the feedback")
+ 
