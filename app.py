@@ -104,12 +104,12 @@ if st.button("Run MCDM Analysis"):
             pref_df = pd.DataFrame(zip(*prefs), columns=selected_method_names, index=alts_names).round(3)
             st.dataframe(pref_df, use_container_width=True)
             # Widget 3.1: Export preferences
-            action = st.menu_button("Export", options=["CSV", "JSON", "PDF"])
-            if action == "CSV":
+            action1 = st.menu_button("Export", options=["CSV", "JSON", "PDF"])
+            if action1 == "CSV":
                 st.write("Exporting as CSV...")
-            elif action == "JSON":
+            elif action1 == "JSON":
                 st.write("Exporting as JSON...")
-            elif action == "PDF":
+            elif action1 == "PDF":
                 st.write("Exporting as PDF...")
             
         with col2:
